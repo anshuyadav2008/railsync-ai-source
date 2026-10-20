@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "RailSync AI Control Room"
+description = "An interactive Smart India Hackathon prototype for AI-assisted railway maintenance block planning, conflict detection, schedule optimization, and controller approval using clearly labeled simulation data."
+version = "1.0.0"
+id = "artifacts/railsync-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20250
+
+[services.development]
+run = "pnpm --filter @workspace/railsync-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/railsync-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/railsync-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20250"
+BASE_PATH = "/"

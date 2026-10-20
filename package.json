@@ -1,0 +1,12 @@
+{
+  "name": "railsync-ai-source",
+  "private": true,
+  "workspaces": [
+    "artifacts/railsync-ai"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@workspace/railsync-ai",
+    "build": "npm run build --workspace=@workspace/railsync-ai",
+    "typecheck": "npm run typecheck --workspace=@workspace/railsync-ai"
+  }
+}
